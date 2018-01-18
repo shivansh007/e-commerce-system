@@ -1,0 +1,17 @@
+<div class="container">
+  <p id="notice"><%= notice %></p>
+  <h1>Categories</h1>
+  <% @categories.each do |category| %>
+  <%= link_to category.name, category, class: "btn btn-md btn-success" %>
+  <% if session[:is_admin] %>
+  <%= link_to 'Edit', edit_category_path(category) %>
+  <%= link_to 'Destroy', category, method: :delete, data: { confirm: 'Are you sure?' } %>
+  <% end %>
+  <br><br>
+  <% end %>
+  <br>
+  <% if session[:is_admin] %>
+  <%= link_to 'New Category', new_category_path %>
+  <% end %>
+  <%= link_to 'Items', items_path %>
+</div>

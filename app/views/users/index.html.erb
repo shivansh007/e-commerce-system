@@ -1,0 +1,18 @@
+<div class="container">
+  <h1>Login</h1>
+  <% @user = User.new %>
+  <%= form_for @user, :url => { :action => :login }, local: true do |form| %>
+  <p>
+    <%= form.label :email %>
+    <%= form.text_field :email, class: "form-control" %>
+  </p>
+  <p>
+    <%= form.label :password %>
+    <%= form.password_field :password, class: "form-control"%>
+  </p>  
+  <%= form.submit "Login", class: "btn btn-md btn-success" %>
+  <% end %>
+  <br>
+  <%= link_to 'New User', new_user_path, class: "btn btn-md btn-primary" %>
+  <%= link_to 'Home', root_path, class: "btn btn-md btn-primary" %>
+</div>

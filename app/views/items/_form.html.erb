@@ -1,0 +1,41 @@
+<%= form_for item, local: true do |form| %>
+  <% if item.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(item.errors.count, "error") %> prohibited this item from being saved:</h2>
+      <ul>
+      <% item.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <div class="field">
+    <%= form.label :name %>
+    <%= form.text_field :name, id: :item_name %>
+  </div>
+  <div class="field">
+    <%= form.label :description %>
+    <%= form.text_area :description, id: :item_description %>
+  </div>
+  <div class="field">
+    <%= form.label :price %>
+    <%= form.text_field :price, id: :item_price %>
+  </div>
+  <div class="field">
+    <%= form.label :stock %>
+    <%= form.number_field :stock, id: :item_stock %>
+  </div>
+  <div class="field">
+    <%= form.label :brand %>
+    <%= form.text_field :brand, id: :item_brand %>
+  </div>
+  <% categories = Category.all.map{|c| [c.id, c.name]} %>
+  <% categories = categories.map(&:reverse).to_h %>
+  <div class="field">
+    <%= form.label :category_id %>
+    <%= form.select :category_id, categories %>
+  </div>
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
