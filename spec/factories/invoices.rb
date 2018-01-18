@@ -1,5 +1,5 @@
 FactoryGirl.define do
   factory :invoice do
-    order nil
+    order { Order.first || association(:order) }
   end
 end
